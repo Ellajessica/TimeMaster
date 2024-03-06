@@ -1,0 +1,7 @@
+services:
+  - name: web
+    buildCommand: python manage.py collectstatic --noinput
+    startCommand: gunicorn TimeMaster.wsgi:application --bind 0.0.0.0:$PORT
+    env:
+      - key: DJANGO_SETTINGS_MODULE
+        value: "TimeMaster.settings"
